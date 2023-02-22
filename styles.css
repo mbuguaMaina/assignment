@@ -1,0 +1,93 @@
+*{
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.assignments_container{
+   position: relative;
+   width: 50vw;
+   margin: 0 auto;
+   position: relative;
+
+ }
+  .courses_container{
+    width: 10vw;
+    
+  }
+  .row_item{
+    width: 35vw;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
+  }
+ .assignments_header{
+   background-color: whitesmoke;
+   border: 2px grey solid;
+   padding: 3px;
+   margin-top: 10px;
+ }
+ 
+ .assignments_header header{
+   background-color: blue;
+   display: flex !important;
+   justify-content:  space-between !important;
+   align-items: center !important;
+   padding: 10px;
+   /* position: fixed;
+     width: 50%; */
+ }
+ .scroll{
+   max-height: 60vh;
+   overflow-y: scroll;
+ }
+  .assignment-content{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+    padding: 0px 10px;
+    border: 1.5px grey solid;
+  }
+ .assignment-content .course_name{
+font-weight: 700;
+font-style: oblique;
+ }
+ .assignment-content .description{
+font-weight: 500;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-style: oblique;
+ }
+ .add_assignment{
+   max-width: 70vw;
+ }
+ .add_assignment .form__group{
+   display: grid;
+   grid-template-columns: 90% 10%;
+
+ }
+ .zero_m{
+   margin-top: -1px;
+ }
+
+ @media screen and (max-width: 767px) {
+  .courses_container {
+    border: 2px grey solid;
+    width: 90vw;
+}
+  .row_item{
+        width: 88vw;
+  }
+  .assignments_container{
+ 
+   width: 100vw;
+   
+ 
+
+ }
+  .add_assignment{
+   max-width: 100%;
+ }
+ .assignments_header header{
+   padding: 10px 2px;
+ }
+ }

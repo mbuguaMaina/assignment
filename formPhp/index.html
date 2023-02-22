@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css fonts/all.min.css">
+  <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./home.css">
+  <title>home</title>
+</head>
+<body>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top "  >
+          <button type="button" class="navbar-toggler " data-bs-target="#collapse" data-bs-toggle="collapse">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="navbar-brand  text-sm-center "> <span class="display-4 text-uppercase text-white fw-bold">martin</span>
+          </div>
+          
+
+<div class="navbar-collapse collapse align-content-center"  id="collapse">
+  <ul class="navbar-nav">
+    <li class="nav-item"> <a href="#" class="nav-link">home</a></li>
+ 
+    
+    <li class="nav-item"> <a href="#" class="nav-link">home</a></li>
+ 
+   
+    <li class="nav-item"> <a href="#" class="nav-link">home</a></li>
+ 
+   
+    <li class="nav-item"> <a href="#" class="nav-link">home</a></li>
+  </ul>
+ 
+</div>
+ <div class="navbar-brand">
+  <button type="button"  class="float-end me-5 position-relative fas fa-phone rounded-3 " data-bs-target="#canvas" data-bs-toggle="offcanvas">
+    <span class="position-absolute top-0 start-100 badge rounded bg-primary translate-middle ">10</span>
+</button></div>
+<div class="offcanvas offcanvas-end" id="canvas">
+<div class="offcanvas-header"> <button type="button" class="btn-close" data-bs-target="#canvas" data-bs-toggle="offcanvas">  </button></div>
+<div class="offcanvas-body">
+  
+</div>
+</div>
+
+        </nav> 
+
+  <div class="form-container"></div>
+   <form action="/api/person" method="POST" class="form m-5">
+    
+    <div class="form-floating">
+      <input type="text" name="name" class="form-control form-control-sm  ">
+      <label for="" class="form-label ">provide a name</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" name="name2" class="form-control form-control-sm  ">
+      <label for="" class="form-label ">provide a name</label>
+    </div>
+    <button type="submit" value="submit" class="d-block btn btn-outline-success" >submit</button>
+   </form>
+   <div class="conatainer">
+    <div class="d-flex align-content-center justify-content-center text-primary text-uppercase" id="insert">
+    </div>
+   </div>
+
+      <div class="carousel slide carousel-dark "   data-bs-ride="carousel" id="carousel1">
+     
+          <div class="carousel-inner">
+            <div class="carousel-item active"> 
+              <img src="./MartinMaina.jpg" class="d-block w-100 bg-dark  h-70" alt="FIRST IMAGE">
+              <div class="carousel-caption"> <h1>the first caption</h1></div>
+            </div>
+            <div class="carousel-item"> <img src="./IMG_20210709_132101.jpg" class="d-block w-100 bg-dark  h-70" alt="SECOND IMAGE"></div>
+            <div class="carousel-item">  <div class="card bg-black w-100 min-vh-70"><div class="card-header"><h1>hello</h1></div></div></div>
+            <div class="carousel-item"> <img src="./IMG_20210709_132101.jpg" class="d-block w-100 bg-dark  h-70" alt="FORTH IMAGE"></div>
+          </div>
+          <button type="button" class="carousel-control-prev " data-bs-target="#carousel1" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button type="button" class="carousel-control-next " data-bs-target="#carousel1" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+            
+        </div>
+  <div class="carousel-indicators    ">
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0"   ></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1"  ></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2"  ></button>
+        <button type="button" data-bs-target="#carousel1" data-bs-slide-to="3"  ></button>
+      </div>
+ 
+<script src="./jquery-3.6.0.min.js"></script>
+  <script src="./bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+   <script>
+   
+     let div = document.getElementById("insert");
+     
+    
+   $(document).ready(function(){
+$('.form').on('submit', function(evt){
+evt.preventDefault();
+var action = $(this).attr('action');
+var $container = $('.form-container');
+var name = $("input[name=name]").val();
+var name2 = $("input[name=name2]").val();
+
+$.ajax({
+url: action,
+type: 'POST',
+data: {name: name, name2: name2},
+success: function(data){
+if(data.success){
+  const result = function(){
+ name.val = '';
+ name2.val = '';
+  }
+ result();
+fetch("http://localhost:3002/api/person").then(response => response.json()).then(data => { data.map(person => {
+
+      div.append(`${person.person}  `)
+    
+     return ;
+      } ) });
+       
+     
+} else {
+$container.html('There was a problem.');
+}
+},
+
+error: function(){
+$container.html('There was a problem.');
+}
+});
+});
+});
+  
+
+   </script>
+
+</body>
+</html>
